@@ -6,6 +6,7 @@ on:
 
 jobs:
   close-invalid-app-compat-report:
+    name: Close invalid app compatibility report
     runs-on: ubuntu-latest
     if: github.event.issue.title == '[app name] compatibility report' && contains(github.event.issue.body, 'e.g. WhatsApp')
     steps:
@@ -16,7 +17,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           labels: 'specific-app/site-related :iphone:'
-      - name: Add invalid label
+      - name: Add invalid label and close
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'comment, add-labels, close-issue'
@@ -24,3 +25,14 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
           body: 'It looks like the report was send blanked'
           labels: 'invalid'
+      - name: Add explaination comment
+        uses: peter-evans/create-or-update-comment@v2
+        with:
+          issue-number: 1
+          body: |
+            Hello @${{ github.event.issue.user.login }}
+            
+            It looks like a blank report.
+            Thanks to update it to at least include the application otherwise the issue is considered as invalid.
+            
+            Regards
