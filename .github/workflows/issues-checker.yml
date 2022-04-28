@@ -1,8 +1,5 @@
 name: Issue checker
 
-permissions: 
-  issues: write
-
 on:
   issues:
     types: [opened]
@@ -25,11 +22,5 @@ jobs:
           actions: 'comment, add-labels, close-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          body: |
-            Hello @${{ github.event.issue.user.login }}
-            
-            It looks like the report was send blanked.
-            Thanks to update it to at least include the application otherwise the issue is considered as invalid.
-            
-            Regards
+          body: 'It looks like the report was send blanked'
           labels: 'invalid'
