@@ -1,0 +1,32 @@
+name: Issue checker
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  close-invalid-app-compat-report:
+    runs-on: ubuntu-latest
+    if: github.event.issue.title == '[app name] compatibility report' && contains(github.event.issue.body, 'e.g. WhatsApp')
+    steps:
+      - name: Remove label
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'remove-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          labels: 'specific-app/site-related :iphone:'
+      - name: Add invalid label
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'comment, add-labels, close-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}
+            
+            It looks like the report was send blanked.
+            Thanks to update it to at least include the application otherwise the issue is considered as invalid.
+            
+            Regards
+          labels: 'invalid'
