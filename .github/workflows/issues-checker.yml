@@ -20,7 +20,7 @@ jobs:
       - name: Add invalid label and close
         uses: actions-cool/issues-helper@v3
         with:
-          actions: 'comment, add-labels, close-issue'
+          actions: 'add-labels, close-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           body: 'It looks like the report was send blanked'
