@@ -9,8 +9,10 @@ jobs:
     name: Request for bug context
     runs-on: ubuntu-latest
     if: |
-      github.event.label.name == 'bug :bug:' &&
-      !contains(github.event.issue.body, 'AdAway version:')
+      github.event.label.name == 'bug :bug:' && (
+        !contains(github.event.issue.body, 'AdAway version:') ||
+        contains(github.event.issue.body, '- AdAway version: \n- Ad-blocker mode: ')
+      )
     steps:
       - name: Add context request comment
         uses: peter-evans/create-or-update-comment@v2
