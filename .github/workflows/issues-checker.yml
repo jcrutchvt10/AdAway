@@ -11,7 +11,7 @@ jobs:
     if: |
       github.event.label.name == 'bug :bug:' && (
         !contains(github.event.issue.body, 'AdAway version:') ||
-        contains(github.event.issue.body, "\- AdAway version: \n- Ad-blocker mode: ")
+        contains(github.event.issue.body, "AdAway version: \n")
       )
     steps:
       - name: Add context request comment
