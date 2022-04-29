@@ -1,6 +1,6 @@
 name: App compatibility
 description: Create a report to track third party application compatibility
-title: [app name] compatibility report
+title: "[app name] compatibility report"
 labels: ['specific-app/site-related :iphone:']
 body:
 - type: checkboxes
