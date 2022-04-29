@@ -1,4 +1,4 @@
-name: Bug report
+name: Bug report YML
 description: File a bug/issue report
 labels: ['bug :bug:']
 body:
