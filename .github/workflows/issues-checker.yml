@@ -2,13 +2,16 @@ name: Issue checker
 
 on:
   issues:
-    types: [opened]
+    types: [labeled]
 
 jobs:
   close-invalid-app-compat-report:
     name: Close invalid app compatibility report
     runs-on: ubuntu-latest
-    if: github.event.issue.title == '[app name] compatibility report' && contains(github.event.issue.body, 'e.g. WhatsApp')
+    if: |
+      github.event.label.name == 'specific-app/site-related :iphone:' && 
+      github.event.issue.title == '[app name] compatibility report' && 
+      contains(github.event.issue.body, 'e.g. WhatsApp')
     steps:
       - name: Remove label
         uses: actions-cool/issues-helper@v3
