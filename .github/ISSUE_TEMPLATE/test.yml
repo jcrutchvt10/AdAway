@@ -34,7 +34,7 @@ body:
     required: false
 - type: textarea
   attributes:
-    label: Device
+    label: Your Device Configuration
     description: |
       examples:
         - **AdAway version**: 5.1.2
@@ -43,11 +43,11 @@ body:
         - **Android version**: 12
         - **Root version**: Magisk 24.1
     value: |
-        - AdAway version:
-        - Ad-blocker mode:
-        - Device:
-        - Android version:
-        - Root version:
+        - AdAway version: 
+        - Ad-blocker mode: 
+        - Device: 
+        - Android version: 
+        - Root version: 
     render: markdown
   validations:
     required: false
