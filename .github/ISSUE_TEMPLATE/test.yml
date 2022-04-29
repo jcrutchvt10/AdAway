@@ -1,4 +1,4 @@
-name: Bug report YML
+name: Bug report XML
 description: File a bug/issue report
 labels: ['bug :bug:']
 body:
@@ -34,9 +34,9 @@ body:
     required: false
 - type: textarea
   attributes:
-    label: Your Device Configuration
+    label: Device Configuration
     description: |
-      examples:
+      Describe your device configuration as precise as possible. For exemple:
         - **AdAway version**: 5.1.2
         - **Ad-blocker mode**: root or vpn
         - **Device**: Pixel 6a
@@ -48,7 +48,6 @@ body:
         - Device: 
         - Android version: 
         - Root version: 
-    render: markdown
   validations:
     required: false
 - type: textarea
